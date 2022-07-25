@@ -1,22 +1,10 @@
 {
-    "user": [
-      {
-        "id": 1,
-        "title": "json-server1",
-        "author": "knightzz1"
-      },
-      {
-        "id": 2,
-        "title": "json-server2",
-        "author": "knightzz2"
-      }
-    ],
-    "login": {
-        "msg": "请求成功",
-        "code": "100",
-        "info": {
-          "result": "fail"
-        }
+  "login": {
+    "msg": "成功",
+    "code": 200,
+    "result": {
+      "username": "admin",
+      "password": "123456"
     }
   }
-  
+}

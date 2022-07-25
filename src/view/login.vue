@@ -4,17 +4,31 @@
 </template>
 <script setup lang="ts">
 import axios from "axios";
-import { result } from "lodash";
-
+import http from "../api/http";
 const demo = () => {
-  axios
-    .get("http://localhost:3000/login")
-    .then((result) => {
-      console.log(result);
+    axios({
+      method:'get',
+      url:'http://localhost:3000/login',
+      data:{
+          name:"aaa"
+      },
+  }) 
+  .then(result => {
+        console.log(result);
+      })
+   .catch(err=> {
+        console.log(err);
     })
-    .catch((err) => {
-      console.log(err);
-    });
-};
+    }
+// const demo = () => {
+//   http.get("/login",{name:111})
+//   .then((res)=>{
+//     console.log("res  "+res)
+//   })
+//   .catch((err:any)=>{
+//     console.log("err  "+err)
+//   })
+
+// };
 </script>
 <style lang="less"></style>
