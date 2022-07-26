@@ -4,7 +4,16 @@
     "code": 200,
     "result": {
       "username": "admin",
-      "password": "123456"
+      "password": "123456",
+      "Authorization":"Authorization1111"
     }
+  },
+  "home":{
+    "msg": "成功",
+    "code": 200,
+    "result": {
+      "text":"查看人员列表"
+    }
+
   }
 }
