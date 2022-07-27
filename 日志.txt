@@ -1,0 +1,4 @@
+2022-7-27
+使用 localStorage存储Authorization，
+无Authorization发送请求阻止。登录才可发起调用请求。
+登录和主页路由互相跳转
