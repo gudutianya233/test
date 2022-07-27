@@ -14,8 +14,9 @@ const http = {
       url: url,
     };
     if (params) config.params = params;
-
-    return service(config);
+    const res=service(config)
+    console.log(res)
+    return res;
   },
   post(url: string, params: any) {
     const config: any = {

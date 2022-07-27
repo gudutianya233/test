@@ -1,7 +1,7 @@
 import axios from "axios";
 import router from "../router/index";
 //import QS from "qs"; //引入qs模块，用来序列化post类型的数据
-const Api = "http://localhost:3000";
+const Api = "http://127.0.0.1:3000";
 
 const service = axios.create({
   baseURL: Api,
@@ -23,7 +23,8 @@ service.interceptors.request.use(
       return req;
     } else {
       console.log("no Authorization");
-      //    router.push('/login');
+      alert("token失效或无token")
+      router.push("/login");
       //跳转到登录，取token
     }
   },

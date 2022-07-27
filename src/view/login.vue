@@ -1,21 +1,23 @@
 <template>
   <h1>111</h1>
-  <button @click="demo">无token请求测试</button>
+  <button @click="demo">404</button>
+  <br />
   <button @click="demo2">登录</button>
 </template>
 <script setup lang="ts">
 import axios from "axios";
 import http from "../api/http";
-import request from "../api/request";
 import router from "../router";
 import { useStore } from "../store/user";
+const userName = "111";
+const passWord = "111";
 const demo2 = () => {
   axios({
     method: "get",
     url: "http://localhost:3000/login",
     data: {
-      userName: "",
-      passWord: "",
+      username: userName,
+      password: passWord,
     },
   })
     .then((result) => {
@@ -24,7 +26,10 @@ const demo2 = () => {
       // localStorage.removeItem('Authorization')
       console.log(localStorage.getItem("Authorization"));
       console.log(result);
-         router.push('/home');
+      router.push({
+        name: "home",
+        params: { username: userName, password: passWord },
+      });
     })
     .catch((err) => {
       console.log(err);
@@ -33,14 +38,7 @@ const demo2 = () => {
 const useStores = useStore();
 
 const demo = () => {
-  http
-    .get("/home", { id: 111 })
-    .then((res) => {
-      console.log(res.data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+router.push("/404");
 };
 </script>
 <style lang="less"></style>
