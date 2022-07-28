@@ -41,4 +41,4 @@ const demo = () => {
 router.push("/404");
 };
 </script>
-<style lang="less"></style>
+<style lang="less" scoped></style>
