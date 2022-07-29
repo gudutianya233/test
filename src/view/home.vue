@@ -37,16 +37,16 @@
                   </el-sub-menu>
                   <el-menu-item @click="inMain1" index="2">
                     <el-icon><icon-menu /></el-icon>
-                    <span>main1</span>
+                    <span>功能一览</span>
                   </el-menu-item>
                   <el-menu-item @click="inMain2" index="3">
                     <el-icon><document /></el-icon>
-                    <span>main2</span>
+                    <span>系统概述</span>
                   </el-menu-item>
-                  <el-menu-item index="4">
+                  <!-- <el-menu-item index="4">
                     <el-icon><setting /></el-icon>
                     <span>Navigator Four</span>
-                  </el-menu-item>
+                  </el-menu-item> -->
                 </el-menu>
               </el-col>
             </el-row>
@@ -55,9 +55,18 @@
             <el-header>
               <div class="topBar">
                 <div class="topBar-navigation1">
-                  <button class="HomePages" @click="HomePage">首页</button>
-                  <span></span>
-                  <span></span>
+                  <div>
+                    <span @click="HomePage">首页</span>
+                    <div>
+                      <span
+                        v-if="useStores.Navigation"
+                        style="padding-left: 5px"
+                      >
+                        <el-icon><ArrowRight /></el-icon>
+                        {{ useStores.Navigation }}</span
+                      >
+                    </div>
+                  </div>
                 </div>
                 <div class="topBar-navigation2">
                   <div>
@@ -102,7 +111,7 @@
 
 <script setup lang="ts">
 import http from "../api/http";
-import router from "../router";
+import route from "../router";
 import { useStore } from "../store/user";
 import {
   Document,
@@ -114,18 +123,16 @@ import {
   Setting,
   ArrowDown,
   Promotion,
+  ArrowRight,
 } from "@element-plus/icons-vue";
 import { useFullscreen } from "@vueuse/core";
 const handleOpen = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath);
+  //console.log(key, keyPath);
 };
 const handleClose = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath);
+  // console.log(key, keyPath);
 };
-//首页
-const HomePage = () => {
-  router.push("/home/homeMain");
-};
+
 //刷新组件
 const useStores = useStore();
 const reload = () => {
@@ -154,25 +161,38 @@ const demo2 = () => {
       console.log(err);
     });
 };
+
+const HomePage = () => {
+  useStores.Navigation = null;
+
+  route.push("/home/homeMain");
+};
 const MenuManagement = () => {
-  router.push("/home/MenuManagement");
+  useStores.Navigation = "菜单管理";
+
+  route.push("/home/MenuManagement");
 };
 const UserManagement = () => {
-  router.push("/home/UserManagement");
+  useStores.Navigation = "用户管理";
+
+  route.push("/home/UserManagement");
 };
 const PermissionManagement = () => {
-  router.push("/home/PermissionManagement");
+  useStores.Navigation = "权限管理";
+  route.push("/home/PermissionManagement");
 };
 const inMain1 = () => {
-  router.push("/home/main1");
+  useStores.Navigation = "功能一览";
+  route.push("/home/functionList");
 };
 const inMain2 = () => {
-  router.push("/home/main2");
+  useStores.Navigation = "系统概述";
+  route.push("/home/systemDescription");
 };
 const loginOut = () => {
   //清除token
   localStorage.removeItem("Authorization");
-  router.push("/login");
+  route.push("/login");
 };
 </script>
 <style lang="less" scoped>
@@ -207,6 +227,15 @@ const loginOut = () => {
 }
 .topBar-navigation1 {
   float: left;
+  padding-top: 10px;
+  div {
+    font-size: 17px;
+    display: flex;
+  }
+}
+.topBar-navigation1 > div > span:hover {
+  color: #30a3e7;
+  cursor: pointer;
 }
 .topBar-navigation2 {
   float: right;

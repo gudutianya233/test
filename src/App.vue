@@ -7,5 +7,6 @@
 </template>
 <script setup lang="ts">
 import loginVue from './view/login.vue';
+
 </script>
 <style scoped lang="less"></style>

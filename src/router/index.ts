@@ -33,28 +33,32 @@ const routes= [
     component: () => import("../view/home.vue"),
     children: [
       {
-        path: "main1",
+        path: "functionList",
+        name:"functionList",
         meta: {
           requireAuth: true, // 添加该字段，表示进入这个路由是需要登录的
         },
-        component: () => import("../components/main/main1.vue"),
+        component: () => import("../components/main/functionList.vue"),
       },
       {
         path: "homeMain",
+        name:"homeMain",
         meta: {
           requireAuth: true, // 添加该字段，表示进入这个路由是需要登录的
         },
         component: () => import("../view/homePage.vue"),
       },
       {
-        path: "main2",
+        path: "systemDescription",
+        name: "systemDescription",
         meta: {
           requireAuth: true, // 添加该字段，表示进入这个路由是需要登录的
         },
-        component: () => import("../components/main/main2.vue"),
+        component: () => import("../components/main/systemDescription.vue"),
       },
       {
         path: "MenuManagement",
+        name: "MenuManagement",
         meta: {
           requireAuth: true, // 添加该字段，表示进入这个路由是需要登录的
         },
@@ -62,6 +66,7 @@ const routes= [
       },
       {
         path: "UserManagement",
+        name: "UserManagement",
         meta: {
           requireAuth: true, // 添加该字段，表示进入这个路由是需要登录的
         },
@@ -69,6 +74,7 @@ const routes= [
       },
       {
         path: "PermissionManagement",
+        name: "PermissionManagement",
         meta: {
           requireAuth: true, // 添加该字段，表示进入这个路由是需要登录的
         },
@@ -78,6 +84,7 @@ const routes= [
   },
   {
     path: "/404",
+    name: "/404",
     component: () => import("../view/404.vue"),
   },
   {
