@@ -11,4 +11,4 @@ const loginOut = () => {
   router.push("/login");
 };
 </script>
-<style lang="less" scpoed></style>
+<style lang="less" scoped></style>

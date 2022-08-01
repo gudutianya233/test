@@ -1,19 +1,31 @@
 <template>
-  <div>
-    <p>菜单管理</p>
+  <div v-loading="loading">
+    <span>菜单管理</span>
+    {{ a }}
   </div>
-  {{a}}
 </template>
-<script lang="ts" setup>
-import { onMounted } from "vue";
+<script setup lang="ts">
+import { onMounted, ref } from "vue";
+import { ElMessage } from "element-plus";
+let loading = ref<boolean>(true); //定义变量
+
 onMounted(() => {
   demo();
+
+  //关闭加载动画
+  setTimeout(() => {
+    loading.value = false;
+    ElMessage({
+      message: "请求成功",
+      type: "success",
+      duration: 500,
+    });
+  }, 1000);
 });
 const a = new Date().getTime(); //获取到当前时间戳
-let b = 0;
+const b = "menuManagement";
 const demo = () => {
   //点击刷新组件时，重新请求接口
-  b++;
   console.log(b);
 };
 </script>

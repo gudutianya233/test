@@ -4,16 +4,14 @@
     <button @click="demo2">带参数请求测试2</button>
     <hr />
   </div>
-  <div></div>
-  <div class="common-layout">
-    <div>
-      <div class="common-layout">
+
+      <div class="common-layout" >
         <el-container>
           <el-aside>
             <el-row>
               <el-col :span="12">
                 <el-menu
-                  active-text-color="#ffd04b"
+                  active-text-color="#ffffff"
                   background-color="#545c64"
                   class="el-menu-vertical-demo"
                   text-color="#fff"
@@ -56,7 +54,7 @@
               <div class="topBar">
                 <div class="topBar-navigation1">
                   <div>
-                    <span @click="HomePage">首页</span>
+                    <span title="回到首页" @click="HomePage">首页</span>
                     <div>
                       <span
                         v-if="useStores.Navigation"
@@ -79,8 +77,8 @@
                   </div>
                   <div class="DividingLine"></div>
                   <div class="topBat-User">
-                    <span class="topBat-User-headPortrait">
-                      <img src="/public/header.jpg" />
+                    <span class="topBat-User-headPortrait">                 
+                      <img src="../assets/header.jpg" />
                     </span>
                     <el-dropdown>
                       <span class="el-dropdown-link">
@@ -105,8 +103,8 @@
           </el-container>
         </el-container>
       </div>
-    </div>
-  </div>
+
+
 </template>
 
 <script setup lang="ts">
@@ -126,13 +124,18 @@ import {
   ArrowRight,
 } from "@element-plus/icons-vue";
 import { useFullscreen } from "@vueuse/core";
+import { ref,onMounted } from "vue";
+import { ElMenu } from "element-plus";
+
 const handleOpen = (key: string, keyPath: string[]) => {
   //console.log(key, keyPath);
 };
 const handleClose = (key: string, keyPath: string[]) => {
   // console.log(key, keyPath);
 };
-
+onMounted(() => {
+ 
+});
 //刷新组件
 const useStores = useStore();
 const reload = () => {
@@ -140,6 +143,7 @@ const reload = () => {
 };
 
 const { toggle } = useFullscreen(); //全屏模式
+
 
 const demo1 = () => {
   http
@@ -164,7 +168,6 @@ const demo2 = () => {
 
 const HomePage = () => {
   useStores.Navigation = null;
-
   route.push("/home/homeMain");
 };
 const MenuManagement = () => {
@@ -196,6 +199,7 @@ const loginOut = () => {
 };
 </script>
 <style lang="less" scoped>
+
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
   min-height: 400px;
@@ -210,6 +214,7 @@ const loginOut = () => {
 }
 .el-main {
   padding: 0;
+  padding-top: 20px;
 }
 
 .topBar-icon {

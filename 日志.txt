@@ -1,3 +1,4 @@
+项目描述:element-plus，axios，vite，log4js,ts
 2022-7-27
 使用 localStorage存储Authorization，
 无Authorization发送请求阻止。登录才可发起调用请求。
@@ -8,3 +9,6 @@
 顶栏导航条实现加载全屏，点击刷新组件页面，
 2022-8-1
 自制简单导航面包屑,内容通过pinia改变. 自定义组件Loading，使用加载失败。
+2022-8-2
+loading使用vue自带属性，没有使用Loading组件。实现loading
+问题:点击首页后，左侧的菜单选中的项目依然是选中状态(解决:把字体的选中颜色改为未选中颜色一样，暂时解决)

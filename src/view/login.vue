@@ -38,7 +38,7 @@ const demo2 = () => {
 const useStores = useStore();
 
 const demo = () => {
-router.push("/404");
+  router.push("/404");
 };
 </script>
 <style lang="less" scoped></style>

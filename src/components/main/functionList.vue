@@ -1,28 +1,30 @@
 <template>
-  <div>
-    <Loading :spinning="loading"></Loading>
+  <div v-loading="loading">
+    <span>functionList</span>
+    {{ a }}
   </div>
-  <span>main11</span>
-  {{ a }}
 </template>
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
-import Loading from "../Loading.vue";
-const loading = ref<boolean>(true); //定义变量
-//显示加载动画
-loading.value = true;
-//关闭加载动画
-setTimeout(() => {
-  loading.value = false;
-}, 1500);
+import { ElMessage } from "element-plus";
+let loading = ref<boolean>(true); //定义变量
+
 onMounted(() => {
   demo();
+  //关闭加载动画
+  setTimeout(() => {
+    loading.value = false;
+    ElMessage({
+      message: "请求成功",
+      type: "success",
+      duration: 500,
+    });
+  }, 1000);
 });
 const a = new Date().getTime(); //获取到当前时间戳
-let b = 0;
+const b = "functionList";
 const demo = () => {
   //点击刷新组件时，重新请求接口
-  b++;
   console.log(b);
 };
 </script>
