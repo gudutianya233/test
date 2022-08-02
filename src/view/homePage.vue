@@ -2,13 +2,41 @@
   <div v-loading="loading">
     <span>homePage</span>
     {{ a }}
+    <div id="chinaChart"></div>
+    <div>
+
+    </div>
   </div>
 </template>
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import { ElMessage } from 'element-plus'
+import Tables from "../components/tables.vue";
 
 let loading = ref<boolean>(true); //定义变量
+//给子组件传递值
+const tableData = ref([
+  {
+    date: '2016-05-03',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+  {
+    date: '2016-05-02',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+  {
+    date: '2016-05-04',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+  {
+    date: '2016-05-01',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+])
 
 onMounted(() => {
   demo();
